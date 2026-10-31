@@ -20,7 +20,7 @@
 html, body {
   width: 100%;
   max-width: 100vw;
-  overflow-x: hidden; /* Fixes horizontal scroll issue */
+  overflow-x: hidden;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
@@ -29,7 +29,7 @@ body{
   background-image:radial-gradient(ellipse at 50% 0,rgba(140,30,30,.35),transparent 70%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='none' stroke='%23c7a15a' stroke-opacity='.13'%3E%3Cpath d='M40 6 58 40 40 74 22 40Z'/%3E%3Ccircle cx='40' cy='40' r='7'/%3E%3Cpath d='M0 0 12 12M80 0 68 12M0 80 12 68M80 80 68 68'/%3E%3C/g%3E%3C/svg%3E");
 }
 body.lock{overflow:hidden;height:100%}
-#app { width: 100%; overflow-x: hidden; position: relative; } /* Added for strict layout lock */
+#app { width: 100%; overflow-x: hidden; position: relative; }
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--champ);outline-offset:3px}
 h1,h2,h3{font-weight:400}
@@ -82,22 +82,12 @@ section h2{font:400 clamp(2.3rem,9vw,3.1rem)/1.15 var(--script);color:var(--cham
 
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:grid;place-items:center;overflow:hidden;
-  background:radial-gradient(ellipse at 50% 40%,#5c1220,#2a0710 75%)}
-.hero::before{content:"";position:absolute;inset:0;background:inherit;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M40 6 58 40 40 74 22 40Z' fill='none' stroke='%23c7a15a' stroke-opacity='.12'/%3E%3C/svg%3E")}
-.hero .floor{position:absolute;left:0;right:0;bottom:0;height:14%;background:linear-gradient(#150406,#4a1a14 45%,#220707);border-top:1px solid rgba(199,161,90,.5)}
-.sc{position:absolute;top:24%;width:30px;height:70px}
-.sc.l{left:8%}.sc.r{right:8%}
-.sc i{position:absolute;left:50%;top:50%;width:10px;height:24px;margin:-12px 0 0 -5px;border-radius:50% 50% 40% 40%;background:#6a5030;box-shadow:24px -6px 0 #6a5030,-24px -6px 0 #6a5030;transition:background 1.2s,box-shadow 1.2s}
-.sc::before{content:"";position:absolute;inset:-60px;background:radial-gradient(circle,rgba(255,170,70,.65),transparent 62%);opacity:0;transition:opacity 1.6s}
-.sc::after{content:"";position:absolute;left:50%;top:70%;width:2px;height:40px;background:var(--gold)}
-.lit .sc::before{opacity:1}
-.lit .sc i{background:#ffe9b0;box-shadow:24px -6px 0 #ffe9b0,-24px -6px 0 #ffe9b0,0 0 20px #ffb347}
-.urn{position:absolute;bottom:11%;width:84px;height:130px}
-.urn.l{left:3%}.urn.r{right:3%}
-.urn::before{content:"";position:absolute;left:0;right:0;top:0;height:70px;border-radius:50%;
-  background:radial-gradient(circle at 30% 40%,#c0303e 0 14px,transparent 15px),radial-gradient(circle at 65% 30%,#9a1d2d 0 16px,transparent 17px),radial-gradient(circle at 55% 65%,#d4506a 0 12px,transparent 13px),radial-gradient(circle at 50% 50%,#5a1020,transparent 70%)}
-.urn::after{content:"";position:absolute;left:30%;right:30%;top:66px;bottom:0;background:linear-gradient(90deg,#8d6a2c,#e1c27c,#8d6a2c);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}
+  background:url("https://i.ibb.co/CppZvMY4/Picsart-26-10-31-13-35-36-289.jpg") center/cover no-repeat;}
+.hero::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom, rgba(20,2,6,0.1) 0%, rgba(20,2,6,0.5) 100%); z-index:1;}
+.hero .floor{display:none;}
+.sc{display:none;}
+.urn{display:none;}
 .hc{position:relative;z-index:2;padding:var(--s4) var(--s3);text-align:center;width:100%;max-width:var(--w)}
 .names{font:400 clamp(3.4rem,17vw,5.2rem)/1 var(--script);color:var(--ivory);margin:var(--s2) 0;text-shadow:0 3px 26px rgba(0,0,0,.7)}
 .names span{display:block}.names .amp{font-size:.5em;color:var(--gold);margin:-.1em 0}
@@ -147,13 +137,9 @@ section h2{font:400 clamp(2.3rem,9vw,3.1rem)/1.15 var(--script);color:var(--cham
 .map-wrap{border-radius:14px;overflow:hidden;border:1px solid rgba(199,161,90,.4);box-shadow:0 8px 24px rgba(0,0,0,.5);height:240px;margin-bottom:18px}
 .map-wrap iframe{width:100%;height:100%;border:0}
 
-/* ---------- Dress Code & Info Cards ---------- */
+/* ---------- Dress Code ---------- */
 .dress-card{background:rgba(42,7,16,.75);border:1px solid rgba(199,161,90,.3);border-radius:16px;padding:20px;margin-bottom:16px}
 .dress-card h4{font:600 .9rem var(--label);color:var(--gold);letter-spacing:.18em;margin-bottom:8px;text-transform:uppercase}
-.info-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left;margin-top:var(--s2)}
-.info-box{background:rgba(42,7,16,.7);border:1px solid rgba(199,161,90,.25);border-radius:14px;padding:18px}
-.info-box h4{font:600 .85rem var(--label);color:var(--gold);letter-spacing:.12em;margin-bottom:8px;text-transform:uppercase}
-.info-box p{font-size:.92rem;opacity:.85}
 
 /* ---------- RSVP Form ---------- */
 form{display:grid;gap:var(--s2);text-align:left;background:rgba(45,8,18,.75);padding:26px;border-radius:20px;border:1px solid rgba(199,161,90,.35)}
@@ -175,8 +161,6 @@ select option{background:#2a0710;color:var(--text)}
 
 @media(min-width:768px){
   :root{--w:640px}
-  .sc.l{left:20%}.sc.r{right:20%}
-  .urn.l{left:16%}.urn.r{right:16%}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01s!important;transition-delay:0s!important;scroll-behavior:auto!important}
@@ -371,18 +355,6 @@ select option{background:#2a0710;color:var(--text)}
         <iframe title="Venue Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.784013589947!2d-0.1085!3d51.599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDM1JzU2LjQiTiAwwrAwNicyOS44Ilc!5e0!3m2!1sen!2suk!4v1620000000000" loading="lazy"></iframe>
       </div>
       <a class="btn" href="https://maps.google.com" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
-    </div>
-
-    <!-- Travel & Accommodation -->
-    <div class="info-row rv">
-      <div class="info-box">
-        <h4>🚌 Transportation</h4>
-        <p>Complimentary shuttles from Central Station at 3:30 PM to the venue.</p>
-      </div>
-      <div class="info-box">
-        <h4>🏨 Accommodation</h4>
-        <p>Special stays at The Grand Palace Hotel. Use code <strong>WEDDING2027</strong> for discounted bookings.</p>
-      </div>
     </div>
   </section>
 
@@ -610,4 +582,3 @@ rsvpForm.addEventListener("submit", function(e) {
 </script>
 </body>
 </html>
-
